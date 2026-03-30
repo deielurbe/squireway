@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian — Slide Deck</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  @page {
+    size: 297mm 210mm;
+    margin: 0;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: #1a1a1a;
+    background: #fff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .slide {
+    width: 297mm;
+    height: 210mm;
+    padding: 18mm 24mm;
+    page-break-after: always;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .slide:last-child {
+    page-break-after: auto;
+  }
+
+  /* --- Slide variants --- */
+
+  .slide.title-slide {
+    background: #1B2E4A;
+    color: #fff;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .slide.title-slide h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 38pt;
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 12px;
+    max-width: 70%;
+  }
+
+  .slide.title-slide .subtitle {
+    font-size: 14pt;
+    font-weight: 300;
+    color: #A8BFDA;
+    max-width: 65%;
+    line-height: 1.5;
+  }
+
+  .slide.title-slide .date {
+    position: absolute;
+    bottom: 18mm;
+    left: 24mm;
+    font-size: 10pt;
+    color: #6B8DB5;
+    font-weight: 400;
+  }
+
+  .slide.content-slide {
+    background: #fff;
+  }
+
+  .slide.content-slide h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22pt;
+    font-weight: 600;
+    color: #1B2E4A;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #1B2E4A;
+  }
+
+  .slide.content-slide .body {
+    flex: 1;
+    font-size: 12pt;
+    line-height: 1.65;
+    color: #333;
+  }
+
+  .slide.content-slide .body ul {
+    padding-left: 20px;
+  }
+
+  .slide.content-slide .body li {
+    margin-bottom: 8px;
+  }
+
+  .slide.content-slide .body strong {
+    color: #1B2E4A;
+  }
+
+  .slide.content-slide .body .highlight {
+    background: #F0F4F8;
+    border-left: 3px solid #1B2E4A;
+    padding: 10px 14px;
+    margin: 12px 0;
+    border-radius: 0 4px 4px 0;
+    font-size: 11pt;
+  }
+
+  .slide.content-slide .body .warning {
+    background: #FFF8F0;
+    border-left: 3px solid #D4883A;
+    padding: 10px 14px;
+    margin: 12px 0;
+    border-radius: 0 4px 4px 0;
+    font-size: 11pt;
+  }
+
+  .slide.content-slide .body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 11pt;
+  }
+
+  .slide.content-slide .body th {
+    background: #1B2E4A;
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 10pt;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+
+  .slide.content-slide .body td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #E8ECF0;
+  }
+
+  .slide.content-slide .body tr:nth-child(even) td {
+    background: #F8FAFB;
+  }
+
+  /* Status badges */
+  .status {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 9pt;
+    font-weight: 500;
+  }
+
+  .status.confirmed { background: #E8F5E9; color: #2E7D32; }
+  .status.at-risk { background: #FFF3E0; color: #E65100; }
+  .status.unknown { background: #F3E5F5; color: #7B1FA2; }
+  .status.overdue { background: #FFEBEE; color: #C62828; }
+
+  /* Two-column layout for content slides */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* Footer on content slides */
+  .slide-footer {
+    position: absolute;
+    bottom: 10mm;
+    left: 24mm;
+    right: 24mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 8pt;
+    color: #999;
+    border-top: 1px solid #E8ECF0;
+    padding-top: 6px;
+  }
+
+  .slide-footer .meridian-mark {
+    font-weight: 600;
+    color: #1B2E4A;
+    letter-spacing: 0.5px;
+  }
+
+  /* Section divider slide */
+  .slide.divider-slide {
+    background: #F0F4F8;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .slide.divider-slide h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30pt;
+    font-weight: 600;
+    color: #1B2E4A;
+  }
+
+  .slide.divider-slide p {
+    font-size: 13pt;
+    color: #666;
+    margin-top: 8px;
+    font-weight: 300;
+  }
+
+  @media print {
+    body { background: #fff; }
+    .slide { box-shadow: none; }
+  }
+
+  /* Screen preview only */
+  @media screen {
+    body {
+      background: #e0e0e0;
+      padding: 20px;
+    }
+    .slide {
+      box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+      margin: 0 auto 20px auto;
+      border-radius: 4px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================ -->
+<!-- TITLE SLIDE                                  -->
+<!-- ============================================ -->
+<div class="slide title-slide">
+  <h1>Presentation Title</h1>
+  <div class="subtitle">A short description or subtitle for the presentation goes here.</div>
+  <div class="date">Date · Meridian Consulting</div>
+</div>
+
+<!-- ============================================ -->
+<!-- EXAMPLE CONTENT SLIDE                        -->
+<!-- ============================================ -->
+<div class="slide content-slide">
+  <h2>Slide Title</h2>
+  <div class="body">
+    <p>This is a content slide. Use it for bullet points, tables, or narrative content.</p>
+    <ul>
+      <li><strong>Key point one</strong> — with supporting detail</li>
+      <li><strong>Key point two</strong> — with supporting detail</li>
+      <li><strong>Key point three</strong> — with supporting detail</li>
+    </ul>
+
+    <div class="highlight">
+      Use highlight boxes for key information or recommendations.
+    </div>
+
+    <div class="warning">
+      Use warning boxes for risks, open questions, or items needing decisions.
+    </div>
+  </div>
+  <div class="slide-footer">
+    <span class="meridian-mark">MERIDIAN</span>
+    <span>Page 2</span>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- EXAMPLE TABLE SLIDE                          -->
+<!-- ============================================ -->
+<div class="slide content-slide">
+  <h2>Table Example</h2>
+  <div class="body">
+    <table>
+      <tr>
+        <th>Item</th>
+        <th>Status</th>
+        <th>Notes</th>
+      </tr>
+      <tr>
+        <td>Example item</td>
+        <td><span class="status confirmed">Confirmed</span></td>
+        <td>Everything on track</td>
+      </tr>
+      <tr>
+        <td>Another item</td>
+        <td><span class="status at-risk">At Risk</span></td>
+        <td>Needs attention this week</td>
+      </tr>
+      <tr>
+        <td>Third item</td>
+        <td><span class="status unknown">Unknown</span></td>
+        <td>No information available</td>
+      </tr>
+    </table>
+  </div>
+  <div class="slide-footer">
+    <span class="meridian-mark">MERIDIAN</span>
+    <span>Page 3</span>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION DIVIDER                              -->
+<!-- ============================================ -->
+<div class="slide divider-slide">
+  <h2>Section Title</h2>
+  <p>Optional subtitle or context line</p>
+</div>
+
+</body>
+</html>

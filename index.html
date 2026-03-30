@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Squire Way — AI Adoption Training</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: #1a1a1a;
+    background: #fff;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  /* ---- NAV ---- */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #eee;
+    z-index: 100;
+    padding: 14px 0;
+  }
+
+  nav .nav-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  nav .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a1a;
+    text-decoration: none;
+  }
+
+  nav .nav-link {
+    font-size: 14px;
+    font-weight: 500;
+    color: #4a5a33;
+    text-decoration: none;
+    padding: 8px 20px;
+    border: 1px solid #4a5a33;
+    border-radius: 4px;
+    transition: all 0.2s;
+  }
+
+  nav .nav-link:hover {
+    background: #4a5a33;
+    color: #fff;
+  }
+
+  /* ---- SECTIONS ---- */
+  section {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---- HERO ---- */
+  .hero {
+    padding-top: 140px;
+    padding-bottom: 60px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+  }
+
+  .hero .subtitle {
+    font-size: 20px;
+    color: #555;
+    max-width: 560px;
+    margin-bottom: 36px;
+    line-height: 1.5;
+  }
+
+  .hero .cta-button {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    background: #4a5a33;
+    padding: 14px 32px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .hero .cta-button:hover {
+    background: #3a4828;
+  }
+
+  /* ---- CONTRAST ---- */
+  .contrast-section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    border-top: 1px solid #eee;
+  }
+
+  .contrast-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .contrast-box {
+    padding: 28px 30px;
+    border-radius: 8px;
+  }
+
+  .contrast-box.helpdesk {
+    background: #f5f0eb;
+    border-left: 4px solid #b8a08a;
+  }
+
+  .contrast-box.squire {
+    background: #eef2e8;
+    border-left: 4px solid #6b7f4e;
+  }
+
+  .contrast-box h3 {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 10px;
+  }
+
+  .contrast-box.helpdesk h3 { color: #8a7560; }
+  .contrast-box.squire h3 { color: #4a5a33; }
+
+  .contrast-box p {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.55;
+  }
+
+  /* ---- PILLARS ---- */
+  .pillars-section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    border-top: 1px solid #eee;
+  }
+
+  .pillars-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px;
+  }
+
+  .pillar {
+    text-align: center;
+  }
+
+  .pillar-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #6b7f4e;
+    margin-bottom: 6px;
+  }
+
+  .pillar h4 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .pillar p {
+    font-size: 15px;
+    color: #666;
+  }
+
+  /* ---- PROCESS ---- */
+  .process-section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    border-top: 1px solid #eee;
+  }
+
+  .process-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .process-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr 1fr;
+    gap: 0;
+  }
+
+  .process-card {
+    padding: 24px;
+    background: #fafafa;
+    border: 1px solid #e8e8e8;
+  }
+
+  .process-card:first-child {
+    border-radius: 8px 0 0 8px;
+    border-right: none;
+  }
+
+  .process-card:last-child {
+    border-radius: 0 8px 8px 0;
+    border-left: none;
+  }
+
+  .process-card.main {
+    background: #eef2e8;
+    border: 1px solid #d4dcc8;
+  }
+
+  .process-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #999;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+
+  .process-card.main .process-label {
+    color: #6b7f4e;
+  }
+
+  .process-card h4 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .process-card ul {
+    padding-left: 18px;
+    font-size: 15px;
+    color: #555;
+    line-height: 1.5;
+  }
+
+  .process-card ul li {
+    margin-bottom: 6px;
+  }
+
+  /* ---- RESULTS ---- */
+  .results-section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    border-top: 1px solid #eee;
+  }
+
+  .results-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .results-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .result-card {
+    padding: 24px 28px;
+    border-left: 3px solid #6b7f4e;
+    background: #fafafa;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .result-card p {
+    font-size: 16px;
+    color: #444;
+    line-height: 1.55;
+  }
+
+  .results-closing {
+    text-align: center;
+    margin-top: 32px;
+    font-size: 18px;
+    font-style: italic;
+    color: #333;
+  }
+
+  /* ---- PRICING ---- */
+  .pricing-section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    border-top: 1px solid #eee;
+  }
+
+  .pricing-card {
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 40px;
+    background: #eef2e8;
+    border-radius: 12px;
+  }
+
+  .pricing-card .price-from {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #6b7f4e;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .pricing-card .price {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.1;
+  }
+
+  .pricing-card .price-detail {
+    font-size: 15px;
+    color: #555;
+    margin-top: 6px;
+    margin-bottom: 20px;
+  }
+
+  .pricing-includes {
+    text-align: left;
+    font-size: 15px;
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  .pricing-includes li {
+    list-style: none;
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 4px;
+  }
+
+  .pricing-includes li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #6b7f4e;
+    font-weight: 700;
+  }
+
+  .pricing-card .cta-button {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    background: #4a5a33;
+    padding: 14px 32px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .pricing-card .cta-button:hover {
+    background: #3a4828;
+  }
+
+  /* ---- REQUIREMENTS ---- */
+  .requirements-section {
+    padding-top: 40px;
+    padding-bottom: 60px;
+  }
+
+  .requirements-section h3 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #999;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .req-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 16px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .req-item {
+    text-align: center;
+    padding: 16px 12px;
+    background: #fafafa;
+    border: 1px solid #e8e8e8;
+    border-radius: 6px;
+  }
+
+  .req-item strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  .req-item span {
+    font-size: 13px;
+    color: #777;
+  }
+
+  /* ---- ABOUT ---- */
+  .about-section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    border-top: 1px solid #eee;
+  }
+
+  .about-inner {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .about-inner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  .about-inner p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  .about-inner .credentials {
+    font-size: 14px;
+    color: #888;
+    margin-top: 20px;
+    line-height: 1.7;
+  }
+
+  /* ---- FOOTER / CTA ---- */
+  .footer-cta {
+    padding: 60px 24px;
+    background: #1a1a1a;
+    text-align: center;
+  }
+
+  .footer-cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+
+  .footer-cta p {
+    font-size: 16px;
+    color: #aaa;
+    margin-bottom: 24px;
+  }
+
+  .footer-cta a.email-link {
+    font-size: 18px;
+    font-weight: 600;
+    color: #eef2e8;
+    text-decoration: none;
+    border-bottom: 1px solid #6b7f4e;
+    padding-bottom: 2px;
+  }
+
+  .footer-cta a.email-link:hover {
+    color: #fff;
+    border-color: #fff;
+  }
+
+  .footer-cta .footer-meta {
+    margin-top: 40px;
+    font-size: 13px;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  .footer-cta .footer-meta a {
+    color: #888;
+    text-decoration: none;
+  }
+
+  .footer-cta .footer-meta a:hover {
+    color: #ccc;
+  }
+
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 36px;
+    }
+
+    .contrast-grid,
+    .pillars-grid,
+    .results-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .process-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .process-card,
+    .process-card:first-child,
+    .process-card:last-child {
+      border-radius: 8px;
+      border: 1px solid #e8e8e8;
+    }
+
+    .process-card.main {
+      border: 1px solid #d4dcc8;
+    }
+
+    .req-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">The Squire Way</a>
+    <a href="#contact" class="nav-link">Get in touch</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>I teach teams to work<br>with AI as a daily partner.</h1>
+  <p class="subtitle">Not a workshop you forget by Friday. A way of working that sticks after I leave.</p>
+  <a href="#contact" class="cta-button">Get in touch</a>
+</section>
+
+<section class="contrast-section">
+  <div class="contrast-grid">
+    <div class="contrast-box helpdesk">
+      <h3>The helpdesk way</h3>
+      <p>You gather your notes, ask AI a question, get an answer, walk back to your desk. Repeat. Not the productivity boost we keep being promised.</p>
+    </div>
+    <div class="contrast-box squire">
+      <h3>The Squire Way</h3>
+      <p>AI works beside you, aware of your context, handling what you delegate, while you stay in command. You are the expert. AI is your squire.</p>
+    </div>
+  </div>
+</section>
+
+<section class="pillars-section">
+  <h2>Three pillars</h2>
+  <div class="pillars-grid">
+    <div class="pillar">
+      <div class="pillar-number">1</div>
+      <h4>Organise your knowledge</h4>
+      <p>Structure your work so AI has useful context</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-number">2</div>
+      <h4>Delegate, don't ask</h4>
+      <p>Give AI tasks, not questions</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-number">3</div>
+      <h4>Stay in command</h4>
+      <p>You're the expert, AI serves your judgement</p>
+    </div>
+  </div>
+</section>
+
+<section class="process-section">
+  <h2>How it works</h2>
+  <div class="process-grid">
+    <div class="process-card">
+      <div class="process-label">Before</div>
+      <h4>Assessment</h4>
+      <ul>
+        <li>Remote call to understand your team's work</li>
+        <li>Identify where AI genuinely helps</li>
+        <li>Confirm setup and prerequisites</li>
+        <li>If it's not a fit, I'll tell you</li>
+      </ul>
+    </div>
+    <div class="process-card main">
+      <div class="process-label">On-site · 2-3 days</div>
+      <h4>Workshop</h4>
+      <ul>
+        <li><strong>Day 1:</strong> Guided exercise where everyone experiences the squire paradigm firsthand</li>
+        <li><strong>Day 2-3:</strong> I sit with each person on their actual tasks, setting up their AI working environment and building the habits that stick</li>
+        <li>Everyone leaves with a working setup they'll keep using Monday morning</li>
+      </ul>
+    </div>
+    <div class="process-card">
+      <div class="process-label">After · included</div>
+      <h4>Follow-up</h4>
+      <ul>
+        <li>Check-in call at 1 week</li>
+        <li>Check-in call at 3 weeks</li>
+        <li>Direct contact for the first month</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="results-section">
+  <h2>Results so far</h2>
+  <div class="results-grid">
+    <div class="result-card">
+      <p>One person I trained became the AI reference for her entire department. Her whole team now works with AI daily, independently.</p>
+    </div>
+    <div class="result-card">
+      <p>Another structured their company and did market research with AI, landing their first client in a week.</p>
+    </div>
+  </div>
+  <p class="results-closing">I don't teach prompts. I teach a way of working that sticks after I leave.</p>
+</section>
+
+<section class="pricing-section" id="pricing">
+  <div class="pricing-card">
+    <div class="price-from">Starting from</div>
+    <div class="price">€5,000</div>
+    <div class="price-detail">Teams up to 5 people</div>
+    <ul class="pricing-includes">
+      <li>Assessment call before we start</li>
+      <li>2-3 days on-site workshop</li>
+      <li>Two follow-up check-ins</li>
+      <li>Direct contact for the first month</li>
+    </ul>
+    <a href="#contact" class="cta-button">Get in touch</a>
+  </div>
+</section>
+
+<section class="requirements-section">
+  <h3>What your team needs</h3>
+  <div class="req-grid">
+    <div class="req-item">
+      <strong>Mac computers</strong>
+      <span>For each participant</span>
+    </div>
+    <div class="req-item">
+      <strong>Claude for Teams</strong>
+      <span>Standard or Premium</span>
+    </div>
+    <div class="req-item">
+      <strong>A real task</strong>
+      <span>Project or work to bring</span>
+    </div>
+    <div class="req-item">
+      <strong>A meeting room</strong>
+      <span>With a screen</span>
+    </div>
+  </div>
+</section>
+
+<section class="about-section">
+  <div class="about-inner">
+    <h2>About me</h2>
+    <p>I'm Dei. I have a PhD in computational biology, a decade of research, and a track record of designing and teaching university-level courses. I also built deitalite, a demand forecasting product for restaurants, entirely with AI as my development partner. From statistical models to production infrastructure, this is the approach I teach.</p>
+    <div class="credentials">
+      PhD in Computational Biology · Founder of deitalite<br>
+      University-level course design · 14 scientific publications<br>
+      Amsterdam · English · Spanish · Conversational Dutch
+    </div>
+  </div>
+</section>
+
+<footer class="footer-cta" id="contact">
+  <h2>Let's talk about your team.</h2>
+  <p>No pitch, no pressure. Just a conversation about whether The Squire Way is right for you.</p>
+  <a href="mailto:deielurbe@gmail.com" class="email-link">deielurbe@gmail.com</a>
+  <div class="footer-meta">
+    <a href="https://www.linkedin.com/in/dei-m-elurbe-aba70749" target="_blank">LinkedIn</a> ·
+    <a href="https://en.malt.nl/profile/deimartinezelurbe" target="_blank">Malt</a>
+  </div>
+</footer>
+
+</body>
+</html>
