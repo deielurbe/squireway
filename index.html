@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Squire Way — AI Adoption Training</title>
+<meta name="description" content="I teach teams to work with AI as a daily partner. Not a workshop you forget by Friday — a way of working that sticks after I leave.">
+<meta property="og:title" content="The Squire Way — AI Adoption Training">
+<meta property="og:description" content="I teach teams to work with AI as a daily partner. Not a workshop you forget by Friday — a way of working that sticks after I leave.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://deielurbe.github.io/squireway/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="The Squire Way — AI Adoption Training">
+<meta name="twitter:description" content="I teach teams to work with AI as a daily partner. Not a workshop you forget by Friday — a way of working that sticks after I leave.">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <style>
   * {
@@ -276,14 +284,14 @@
     margin-bottom: 6px;
   }
 
-  /* ---- RESULTS ---- */
-  .results-section {
+  /* ---- TESTIMONIALS ---- */
+  .testimonials-section {
     padding-top: 60px;
     padding-bottom: 60px;
     border-top: 1px solid #eee;
   }
 
-  .results-section h2 {
+  .testimonials-section h2 {
     font-family: 'Playfair Display', serif;
     font-size: 32px;
     font-weight: 700;
@@ -291,33 +299,32 @@
     margin-bottom: 40px;
   }
 
-  .results-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    max-width: 720px;
-    margin: 0 auto;
-  }
-
-  .result-card {
-    padding: 24px 28px;
-    border-left: 3px solid #6b7f4e;
+  .testimonial {
+    max-width: 640px;
+    margin: 0 auto 32px auto;
+    padding: 28px 32px;
     background: #fafafa;
+    border-left: 3px solid #6b7f4e;
     border-radius: 0 8px 8px 0;
   }
 
-  .result-card p {
+  .testimonial blockquote {
     font-size: 16px;
     color: #444;
-    line-height: 1.55;
+    line-height: 1.65;
+    margin-bottom: 16px;
+    font-style: italic;
   }
 
-  .results-closing {
-    text-align: center;
-    margin-top: 32px;
-    font-size: 18px;
-    font-style: italic;
-    color: #333;
+  .testimonial .attribution {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1a1a;
+  }
+
+  .testimonial .attribution span {
+    font-weight: 400;
+    color: #888;
   }
 
   /* ---- PRICING ---- */
@@ -415,32 +422,11 @@
     margin-bottom: 20px;
   }
 
-  .req-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 16px;
-    max-width: 640px;
-    margin: 0 auto;
-  }
-
-  .req-item {
+  .req-note {
     text-align: center;
-    padding: 16px 12px;
-    background: #fafafa;
-    border: 1px solid #e8e8e8;
-    border-radius: 6px;
-  }
-
-  .req-item strong {
-    display: block;
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 2px;
-  }
-
-  .req-item span {
-    font-size: 13px;
-    color: #777;
+    font-size: 15px;
+    color: #888;
+    margin-top: 8px;
   }
 
   /* ---- ABOUT ---- */
@@ -556,9 +542,6 @@
       border: 1px solid #d4dcc8;
     }
 
-    .req-grid {
-      grid-template-columns: 1fr 1fr;
-    }
   }
 </style>
 </head>
@@ -645,17 +628,12 @@
   </div>
 </section>
 
-<section class="results-section">
-  <h2>Results so far</h2>
-  <div class="results-grid">
-    <div class="result-card">
-      <p>One person I trained became the AI reference for her entire department. Her whole team now works with AI daily, independently.</p>
-    </div>
-    <div class="result-card">
-      <p>Another structured their company and did market research with AI, landing their first client in a week.</p>
-    </div>
+<section class="testimonials-section">
+  <h2>What people say</h2>
+  <div class="testimonial">
+    <blockquote>His strength was in listening carefully and explaining things through analogies that make sense even if you don't have a technical background. My efficiency has gone up, my skills have improved, and I have since been able to introduce AI tools, complete with a solid working base, to my team, where they have been received with real enthusiasm. Dei's approach is not about gatekeeping — he has actually helped me gain the knowledge to continue this journey on my own.</blockquote>
+    <div class="attribution">Content Team Lead <span>· Milieu Service Nederland</span></div>
   </div>
-  <p class="results-closing">I don't teach prompts. I teach a way of working that sticks after I leave.</p>
 </section>
 
 <section class="pricing-section" id="pricing">
@@ -674,34 +652,17 @@
 </section>
 
 <section class="requirements-section">
-  <h3>What your team needs</h3>
-  <div class="req-grid">
-    <div class="req-item">
-      <strong>Mac computers</strong>
-      <span>For each participant</span>
-    </div>
-    <div class="req-item">
-      <strong>Claude for Teams</strong>
-      <span>Standard or Premium</span>
-    </div>
-    <div class="req-item">
-      <strong>A real task</strong>
-      <span>Project or work to bring</span>
-    </div>
-    <div class="req-item">
-      <strong>A meeting room</strong>
-      <span>With a screen</span>
-    </div>
-  </div>
+  <h3>Prerequisites</h3>
+  <p class="req-note">We'll sort out the details together during the assessment call.</p>
 </section>
 
 <section class="about-section">
   <div class="about-inner">
     <h2>About me</h2>
-    <p>I'm Dei. I have a PhD in computational biology, a decade of research, and a track record of designing and teaching university-level courses. I also built deitalite, a demand forecasting product for restaurants, entirely with AI as my development partner. From statistical models to production infrastructure, this is the approach I teach.</p>
+    <p>I'm Dei. I have a PhD in computational biology, a decade of research, and a track record of designing and teaching university-level courses. I also built a production SaaS product entirely with AI as my development partner — from data models to infrastructure to customer-facing features. This is the approach I teach.</p>
     <div class="credentials">
-      PhD in Computational Biology · Founder of deitalite<br>
-      University-level course design · 14 scientific publications<br>
+      PhD in Computational Biology · 14 scientific publications<br>
+      University-level course design · Production AI workflows<br>
       Amsterdam · English · Spanish · Conversational Dutch
     </div>
   </div>
@@ -717,5 +678,7 @@
   </div>
 </footer>
 
+<script data-goatcounter="https://squireway.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
